@@ -78,8 +78,8 @@ func (tg *TelegramBot) Bot() {
 							}else {
 								if question.Correct == a {
 									
-									tg.db.ChangeUserScore(user.TgId, user.Score + 10)
-									msg := tgbotapi.NewMessage(update.Message.Chat.ID,fmt.Sprintf("✅Верно!\n\n📄Объяснение:\n%s\n\nВаш счет:%s",question.Answer, strconv.Itoa(user.Score)))
+									tg.db.ChangeUserScore(user.TgId, user.Score + 1)
+									msg := tgbotapi.NewMessage(update.Message.Chat.ID,fmt.Sprintf("✅Верно!\n\n📄Объяснение:\n%s\n\nВаш счет:%s",question.Answer, strconv.Itoa(user.Score + 1)))
 									bot.Send(msg)
 									tg.db.ChangeUserQuestNum(user.TgId, user.QuestNum + 1)
 									question, err := tg.db.GetQuestionById(user.QuestNum + 1)
